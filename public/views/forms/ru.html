@@ -1,0 +1,48 @@
+<div class="col s12 m12 l5 offset-l1">
+    <div class="row">
+        <div class="col s12">
+            <h3>Calculator</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="input-field inline">
+                <input id="gross-salary" type="text" numeric-only ng-model="calc.gross" ng-change="calculate()">
+                <label for="gross-salary">Gross salary</label>
+            </div>
+            <span ng-bind="calc.currency"></span>
+        </div>
+
+    </div>
+    <div class="row" ng-if="country.regions.length > 0">
+        <div class="col s12">
+            <div class="input-field">
+                <select select-region ng-model="region">
+                    <option value="" disabled selected>Choose <span ng-bind="country.regionLabel"></span></option>
+                    <option ng-repeat="selectRegion in country.regions" value="{{selectRegion.url}}">{{selectRegion.name}}</option>
+                </select>
+                <label><span ng-bind="country.regionLabel"></span></label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h5>Effective tax rate: <span ng-bind="calc.effectiveRate"></span>%</h5>
+        </div>
+        <div class="col s12">
+            <h5>Tax: <span ng-bind="calc.tax | number"></span> <span ng-bind="calc.currency"></span></h5>
+        </div>
+        <div class="col s12">
+            <h4>Net salary after tax: <span ng-bind="calc.result | number"></span> <span ng-bind="calc.currency"></span></h4>
+        </div>
+    </div>
+</div>
+<div class="col s12 m12 l5">
+    <p class="flow-text">
+        In Russia personal income tax rate for salary is 13%. However, for other types of personal income the rate can be different.
+    </p>
+</div>
+<div class="col s12 m12 l10 offset-l1">
+    <p>Please note that estimations provided above are indicative, because the exact tax rate and net income may depend on your personal circumstances. For precise pesonal income tax estimates you should consult with the Russian tax authority or professional tax consultants.</p>
+</div>

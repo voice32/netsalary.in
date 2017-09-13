@@ -1,0 +1,58 @@
+<header>
+    <nav>
+        <div class="nav-wrapper blue">
+            <a href="/" class="brand-logo center">Estimate your net salary</a>
+        </div>
+    </nav>
+</header>
+<main ng-controller="IndexCtrl">
+    <div class="row">
+        <div class="col s12 m12 l5 offset-l1">
+            <p class="flow-text">
+                When you are thinking about getting a job in another country, it is important to know the personal
+                income tax rate in that country and the net salary you would take home. In certain countries tax rates on salaries can be up to 50% of the
+                gross amount. This simple service helps you to estimate your net salary in various countries, so that
+                you can be more confident that the salary proposed in a job contract would be enough for the quality of
+                life you're seeking in the country of your choice.
+            </p>
+        </div>
+        <div class="col s12 m12 l5">
+            <div class="row">
+                <h3 class="center-align">How much of your gross salary will you take home in...</h3>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <form ng-submit="selectCountry()" class="" autocomplete="off">
+                        <input type="text" id="country" class="autocomplete col s10 m11" ng-model="country">
+                        <label for="country">Enter the name of the country</label>
+                        <button class="btn blue waves-effect waves-light col s2 m1" type="submit" name="action">
+                            <i class="material-icons">send</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <h4 class="center-align">...or pick the country from the list:</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="countryCard in countries">
+            <div class="clearfix" ng-if="$index % 2 == 0"></div>
+            <div class="col s12 m6 l5" ng-class="{'offset-l1': $index % 2 == 0}">
+                <div class="card horizontal" >
+                    <div class="card-image">
+                        <a href="/{{countryCard.url}}">
+                        <img class="circle responsive-img" ng-src="{{countryCard.flag}}" style="height: 62px">
+                        </a>
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <a href="{{countryCard.url}}">{{countryCard.name}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

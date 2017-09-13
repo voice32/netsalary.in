@@ -1,0 +1,46 @@
+<div class="col s12 m12 l5 offset-l1">
+    <div class="row">
+        <div class="col s12">
+            <h3>Calculator</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="input-field inline" style="margin-left: 0px">
+                <input id="gross-salary" type="text" numeric-only ng-model="calc.gross" ng-change="calculate()">
+                <label for="gross-salary">Gross salary</label>
+            </div>
+            <span ng-bind="country.currency"></span>
+        </div>
+    </div>
+    <div class="row" ng-show="country.regions.length>0">
+        <div class="col s12">
+            <div class="input-field">
+                <select select-region ng-model="region">
+                    <option value="" disabled selected>Choose</option>
+                    <option ng-repeat="regionItem in country.regions" value="{{regionItem.url}}">{{regionItem.name}}</option>
+                </select>
+                <label><span ng-bind="country.regionLabel"></span></label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h5>Effective tax rate: <span ng-bind="calc.effectiveRate"></span>%</h5>
+        </div>
+        <div class="col s12">
+            <h5>Tax: <span ng-bind="calc.tax | number"></span> <span ng-bind="country.currency"></span></h5>
+        </div>
+        <div class="col s12">
+            <h4>Net salary after tax: <span ng-bind="calc.result | number"></span> <span ng-bind="country.currency"></span></h4>
+        </div>
+    </div>
+</div>
+<div class="col s12 m12 l5">
+    <p class="flow-text" ng-bind-html="country.text"></p>
+    <p class="flow-text" ng-show="$parent.$parent.region" ng-bind-html="$parent.$parent.region.text"></p>
+</div>
+<div class="col s12 m12 l10 offset-l1">
+    <p ng-bind-html="country.disclaimer"></p>
+</div>
